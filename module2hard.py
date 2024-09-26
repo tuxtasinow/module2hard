@@ -1,12 +1,15 @@
-def decoding(num):
-    list_num = []
-    for i in range(num):
-        for j in range(i + 1, num):
-            if (i + j) % num == 0:
-                list_num.append(f'{i}{j}')
-    return ''.join(list_num)
+def find_password(n):
+    result = ''
+    # Перебираем все числа от 1 до n-1
+    for i in range(1, n):
+        for j in range(i+1, n):
+            # Если число кратно сумме пары
+            if n % (i + j) == 0:
+                # Добавляем пару в строку
+                result += str(i) + str(j)
+    return result
 
-
-num = int(input('Введите число от 3 до 20: '))
-result = decoding(num)
-print(f'Пароль: {result}')
+# Пример использования
+n = int(input("Введите число (от 3 до 20): "))
+password = find_password(n)
+print(f"Нужный пароль для числа {n}: {password}")
